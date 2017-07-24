@@ -6,13 +6,9 @@ from math import pi
 import sys
 
 ts = TouchSensor() ; assert ts.connected
-#cs = ColorSensor() ; assert cs.connected
-#cs.mode = 'COL-COLOR'
-lw = LargeMotor('outB')
-rw = LargeMotor('outC')
-us = UltrasonicSensor()
-assert us.connected
-us.mode = 'US-DIST-CM'
+
+#We can write two commands on the same line using semicolon
+#assert ts.connected will automatically set up the TouchSensor connection
 
 for i in range(50):
   if ts.is_pressed == True:
@@ -21,3 +17,11 @@ for i in range(50):
   else:
     print("False")
     sleep(0.5)
+
+sys.exit()
+
+
+
+
+
+
