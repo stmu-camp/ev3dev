@@ -1,0 +1,16 @@
+The most important change in version 10 is that speed regulation is now
+always on (except for the run_direct command) which means motors are now 
+always controlled by speed_sp parameter (except for the run_direct 
+command). Basically then, you should avoid using run_direct and thus 
+never use duty_cycle_sp and always use speed_sp. 
+
+speed_sp is in degrees, -1000 <= speed_sp <= 1000. 
+But recommended using [-900 to 900]
+
+speed_sp represents the TARGET speed in degrees per second
+>>mB.run_timed(time_sp=600, speed_sp=600)
+this code means that the motor turns 0.6s*600°/s=360°=1 rotation
+but in reality it will turn significantly less (maybe 15% less) because 
+the inertia of the motor stops the motor from reaching its target speed 
+instantly.
+

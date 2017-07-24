@@ -1,0 +1,23 @@
+Use run_to_rel_pos(position_sp=<angle in degrees>, speed_sp=<value>).
+If you want to motor to run backwards then use a negative value for 
+position_sp rather than for speed_sp. Using a negative value for speed_sp 
+will not work because the sign of speed_sp is ignored by this command 
+(but not by others). Use speed_sp values between 0 and 1000.
+
+
+Example:
+To make a large motor on port B turn through 360 degrees at speed 900
+and optionally apply a 'hold' (like a strong brake - see later):
+
+
+#!/usr/bin/env python3
+# so that script can be run from Brickman
+
+from ev3dev.ev3 import *
+from time import sleep
+
+m = LargeMotor('outB')
+
+m.run_to_rel_pos(position_sp=360, speed_sp=900, stop_action="hold")
+
+sleep(5)   # Give the motor time to move

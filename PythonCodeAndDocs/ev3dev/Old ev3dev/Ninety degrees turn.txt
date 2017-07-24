@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+from ev3dev.ev3 import *
+from time import sleep
+
+lw = LargeMotor('outB')
+rw = LargeMotor('outC')
+
+cs = ColorSensor() ; assert cs.connected 
+
+for i in range 4:
+	if cs.value > 20:
+		lw.run_forever(speed_sp = 900)
+		rw.run_forever(speed_sp = 900)
+	if cs.value < 20:
+		

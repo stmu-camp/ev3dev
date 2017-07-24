@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+from ev3dev.ev3 import *
+from time import sleep
+
+lw = LargeMotor('outB')
+rw = LargeMotor('outC')
+
+lw.run_forever(speed_sp = 900) # equivalent to power=90 in EV3-G
+rw.run_forever(speed_sp = 900)	# equivalent to power=90 in EV3-G
+sleep(5)
+m.stop(stop_action = "hold")
+sleep(5)
+
+lw.run_forever()
+rw.run_forever()
+sleep(1)
+
+lw.run_forever()
+rw.run_forever()
+sleep(1)
+--------------------------------------------
+//stop_action  is set to  'hold'  which makes an active, forceful effort
+to stop the motor turning.
+//you can use  stop_action="coast" which lets the motor continue to turn
+ until stopped by friction. 
+
+Also, the second run_forever command will use the remembered value for 
+speed_sp since none was specified.
+-----------------------------------
+#!/usr/bin/env python3
+from ev3dev.ev3 import * 
+from time import sleep
+
+lw = LargeMotor('outB') 
+#assert lw.connected
+rw = LargeMotor('outC') 
+#assert rw.connected
+
+ts = TouchSensor()
+while not ts.value():
+  lw.run_forever(speed_sp = 400)
+  rw.run_forever(speed_sp = 400)
+  
+  

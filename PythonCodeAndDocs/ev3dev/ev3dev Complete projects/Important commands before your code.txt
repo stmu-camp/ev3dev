@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+from ev3dev.ev3 import *
+
+
+The first line is the shebang. #!/usr/bin/env python3 is the shebang and
+must be included on the first line!
+
+
+
+After finishing the program, you must convert the program (for Windows
+users) from Windows to linux.
+>> sudo apt-get install dos2unix
+>> sudo dos2unix test.py
+>> chmod +x test.py
